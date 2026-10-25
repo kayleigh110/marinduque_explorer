@@ -1,0 +1,7 @@
+Applied both fixes in task4A.html: itinerary updates now trigger a polite screen-reader announcement, and removing a saved place moves keyboard focus to the itinerary heading instead of leaving focus on a detached button.
+
+Test
+
+Use Tab to reach a card’s “Add to itinerary” button and press Enter. With a screen reader, confirm it announces that the place was added. Remove it and confirm the removal is announced.
+Save two places, Tab to the first “Remove” button in the itinerary, and press Enter. Confirm focus moves to “Your island list.”
+Editor diagnostics report no errors. I haven’t run a browser or screen reader test.

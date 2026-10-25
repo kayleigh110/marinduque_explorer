@@ -1,0 +1,11 @@
+Findings
+
+Medium, keyboard focus: Removing a saved place rebuilds the entire list with replaceChildren() at task4A.html:396. The clicked remove button is detached, so keyboard focus may be lost. After removal, move focus to the next remove button, the previous one, or a stable itinerary heading.
+
+Medium, screen-reader feedback: The itinerary count changes at task4A.html:427, but neither it nor the list at task4A.html:307 is a live region. Announce saved and removed updates through a concise aria-live="polite" status.
+
+Medium, image clarity and alt text: Card image metadata and visible image sources disagree. Boac’s data-image is set at task4A.html:255, but its card displays a different source at task4A.html:257; the modal uses the metadata source at task4A.html:443. Bathala’s image alt says “Rocky coastline” even though the URL refers to a cave image at task4A.html:284. Keep the card and modal image sources aligned and make each alt accurately describe its image.
+
+Medium, text contrast: The coral accent is used for small text in the eyebrows and card categories at task4A.html:52 and task4A.html:92. Its contrast on the gallery background is about 3.16:1, below the 4.5:1 target for small text. Darken that text color or use a more contrasting color.
+
+The page otherwise has useful accessibility foundations: semantic landmarks, a skip link, labeled filter controls with pressed states, and a native dialog with focus restoration. No files changed; this review was based on the current source, without a browser or screen-reader test. 

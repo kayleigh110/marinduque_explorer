@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Explore the island landscapes, heritage, and traditions of Marinduque, the heart of the Philippine archipelago.">
+  <title>Marinduque — Island of the Heart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #183b38;
+      --muted: #637773;
+      --paper: #f7f5ef;
+      --sea: #dcebe5;
+      --green: #315b4b;
+      --coral: #dc7259;
+      --line: #d8dfd8;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(24, 59, 56, .12);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 14px; font-weight: 700; letter-spacing: .04em; }
+    .brand-mark { width: 30px; height: 30px; border: 1px solid var(--green); border-radius: 50%; display: grid; place-items: center; color: var(--green); font-family: "Playfair Display", serif; font-size: 19px; }
+    .nav-links { display: flex; align-items: center; gap: 34px; font-size: 13px; font-weight: 600; color: #3f5b55; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-cta { padding: 11px 17px; border: 1px solid var(--ink); border-radius: 2px; }
+
+    .hero {
+      min-height: 610px;
+      position: relative;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: #38625c;
+      color: #fff;
+    }
+    .hero-image { position: absolute; inset: 0; height: 100%; object-position: center 52%; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12, 37, 37, .68), rgba(14, 42, 39, .17) 75%), linear-gradient(0deg, rgba(11, 34, 32, .43), transparent 65%); }
+    .hero-content { position: relative; z-index: 1; padding-block: 94px 82px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; font-size: 11px; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
+    h1 { max-width: 720px; margin-bottom: 20px; font-size: clamp(54px, 7vw, 92px); line-height: .98; }
+    .hero-copy { max-width: 460px; margin-bottom: 31px; color: rgba(255,255,255,.88); font-size: 16px; line-height: 1.7; }
+    .hero-link { display: inline-flex; align-items: center; gap: 14px; padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,.75); font-size: 13px; font-weight: 700; }
+    .hero-link span { color: #f2b59e; font-size: 19px; transition: transform .2s ease; }
+    .hero-link:hover span { transform: translateX(4px); }
+    .hero-note { position: absolute; z-index: 1; right: max(24px, calc((100vw - 1180px) / 2)); bottom: 34px; font-size: 10px; color: rgba(255,255,255,.8); letter-spacing: .06em; }
+
+    .intro { padding: 78px 0 82px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 10%; align-items: start; }
+    .section-kicker { margin-bottom: 17px; color: var(--coral); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .intro h2 { max-width: 370px; margin-bottom: 0; font-size: 42px; line-height: 1.12; }
+    .intro-copy { max-width: 590px; padding-top: 27px; color: var(--muted); font-size: 15px; line-height: 1.85; }
+    .intro-copy p { margin-bottom: 14px; }
+    .intro-copy strong { color: var(--ink); font-weight: 600; }
+
+    .places { padding: 70px 0 84px; background: #e9eee8; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    .section-heading h2 { margin-bottom: 0; font-size: 43px; line-height: 1.1; }
+    .section-heading p { max-width: 330px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .place-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .place-card { min-width: 0; }
+    .place-photo { height: 250px; overflow: hidden; background: #b7c9bd; }
+    .place-photo img { height: 100%; transition: transform .5s ease; }
+    .place-card:hover .place-photo img { transform: scale(1.035); }
+    .place-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 17px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .place-meta span:last-child { color: var(--coral); }
+    .place-card h3 { margin: 8px 0 7px; font-size: 25px; }
+    .place-card p { max-width: 340px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    .culture { padding: 82px 0; background: var(--green); color: #f7f5ef; }
+    .culture-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 11%; align-items: center; }
+    .culture .section-kicker { color: #f2b59e; }
+    .culture h2 { max-width: 430px; margin-bottom: 22px; font-size: 46px; line-height: 1.08; }
+    .culture-copy { max-width: 460px; color: rgba(247,245,239,.78); font-size: 14px; line-height: 1.8; }
+    .culture-copy p:last-child { margin-bottom: 0; }
+    .culture-image { position: relative; height: 340px; background: #81968a; }
+    .culture-image img { height: 100%; }
+    .culture-image::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,255,255,.58); pointer-events: none; }
+    .culture-caption { position: absolute; right: 0; bottom: -26px; color: rgba(247,245,239,.68); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+
+    .visit { padding: 66px 0 72px; text-align: center; }
+    .visit .section-kicker { margin-bottom: 13px; }
+    .visit h2 { margin-bottom: 13px; font-size: 39px; }
+    .visit p { max-width: 510px; margin: 0 auto 23px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .visit-link { display: inline-block; padding: 12px 19px; border: 1px solid var(--ink); font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .visit-link:hover { color: #fff; background: var(--ink); }
+    footer { padding: 20px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .topbar { height: 66px; }
+      .nav-links { gap: 16px; font-size: 12px; }
+      .nav-links a:nth-child(2) { display: none; }
+      .nav-cta { padding: 9px 11px; }
+      .hero { min-height: 570px; }
+      .hero-content { padding-block: 75px 82px; }
+      .hero-note { right: 18px; bottom: 20px; }
+      .intro { padding: 58px 0 61px; grid-template-columns: 1fr; gap: 12px; }
+      .intro h2 { max-width: 520px; font-size: 37px; }
+      .intro-copy { padding-top: 0; }
+      .places { padding: 57px 0 64px; }
+      .section-heading { display: block; margin-bottom: 25px; }
+      .section-heading h2 { margin-bottom: 12px; font-size: 38px; }
+      .place-grid { grid-template-columns: 1fr; gap: 29px; }
+      .place-photo { height: auto; aspect-ratio: 1.55; }
+      .culture { padding: 60px 0 74px; }
+      .culture-layout { grid-template-columns: 1fr; gap: 33px; }
+      .culture h2 { font-size: 39px; }
+      .culture-image { height: auto; aspect-ratio: 1.35; }
+      .visit { padding: 56px 0 62px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Marinduque home"><span class="brand-mark" aria-hidden="true">M</span><span>MARINDUQUE</span></a>
+      <div class="nav-links">
+        <a href="#places">Discover</a>
+        <a href="#culture">Culture</a>
+        <a class="nav-cta" href="#visit">Plan a visit</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=2200&q=85" alt="Tropical island coast surrounded by clear blue water">
+      <div class="hero-content wrap">
+        <p class="eyebrow">The heart of the Philippines</p>
+        <h1 id="hero-title">Find your island story.</h1>
+        <p class="hero-copy">A gentle island of mountain trails, quiet shores, and traditions carried from one generation to the next.</p>
+        <a class="hero-link" href="#places">Explore Marinduque <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="hero-note">MIMAROPA · PHILIPPINES</span>
+    </section>
+
+    <section class="intro wrap" aria-labelledby="intro-title">
+      <div>
+        <p class="section-kicker">An island with a story</p>
+        <h2 id="intro-title">Small island. Big-hearted welcome.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Set between the Bondoc Peninsula and Mindoro, Marinduque is often called the <strong>heart of the Philippine archipelago</strong>. Its curved coastline leads to fishing towns, forested slopes, and beaches made for unhurried days.</p>
+        <p>Come for the scenery; stay for the warmth, the local flavors, and a culture that feels distinctly its own.</p>
+      </div>
+    </section>
+
+    <section class="places" id="places" aria-labelledby="places-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">A few places to begin</p>
+            <h2 id="places-title">Follow the coastline</h2>
+          </div>
+          <p>From the island's historic center to its bright blue shores, there is room to wander at your own pace.</p>
+        </div>
+        <div class="place-grid">
+          <article class="place-card">
+            <div class="place-photo"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80" alt="Sunlit waves rolling onto a tropical beach" loading="lazy"></div>
+            <div class="place-meta"><span>Torrijos</span><span>01 / Shore</span></div>
+            <h3>Poctoy White Beach</h3>
+            <p>Spend a slow afternoon on the sand with views across the water toward Mount Malindig.</p>
+          </article>
+          <article class="place-card">
+            <div class="place-photo"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1000&q=80" alt="Small tropical islands rising from turquoise sea" loading="lazy"></div>
+            <div class="place-meta"><span>Santa Cruz</span><span>02 / Island</span></div>
+            <h3>Maniwaya Island</h3>
+            <p>Clear shallows, island-hopping, and a quieter rhythm along Marinduque's eastern coast.</p>
+          </article>
+          <article class="place-card">
+            <div class="place-photo"><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=80" alt="Historic stone church architecture beneath a bright sky" loading="lazy"></div>
+            <div class="place-meta"><span>Boac</span><span>03 / Heritage</span></div>
+            <h3>Boac Heritage Town</h3>
+            <p>Explore the provincial capital's old streets and the hilltop Immaculate Conception Cathedral.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="culture" id="culture" aria-labelledby="culture-title">
+      <div class="culture-layout wrap">
+        <div>
+          <p class="section-kicker">Tradition, still alive</p>
+          <h2 id="culture-title">A festival you feel as much as see.</h2>
+          <div class="culture-copy">
+            <p>Every Holy Week, the Moriones Festival brings masked Roman-soldier characters into the streets of Marinduque. The island's towns each add their own energy to this vivid retelling of the story of Longinus.</p>
+            <p>Between festival days, look for the everyday culture too: warm conversations, community celebrations, and local treats like crisp uraro arrowroot cookies.</p>
+          </div>
+        </div>
+        <figure class="culture-image">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80" alt="Colorful festival decorations above a lively street" loading="lazy">
+          <figcaption class="culture-caption">A celebration shaped by community</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="wrap">
+        <p class="section-kicker">Your next island escape</p>
+        <h2 id="visit-title">Make room for Marinduque.</h2>
+        <p>Take the journey slowly. Check current ferry schedules and local conditions before setting out, then let the island set the pace.</p>
+        <a class="visit-link" href="https://www.google.com/maps/search/Marinduque,+Philippines" target="_blank" rel="noopener noreferrer">Find Marinduque on the map ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <p>MARINDUQUE · MIMAROPA, PHILIPPINES</p>
+      <p>Travel gently. Leave the island as lovely as you found it.</p>
+    </div>
+  </footer>
+</body>
+</html>
